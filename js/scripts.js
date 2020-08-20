@@ -5,6 +5,7 @@ function validateForm(e){
     console.log('validating....');
 
     console.log('user name: ' + validateUsername());
+    
     console.log('email: ' + validateEmail());
     console.log('password: ' + validatePassword());
 
@@ -97,18 +98,29 @@ function checkSpace(sample) {
  * look under the "username" input field and returns the value of it
  * returns nothing if no value is found
  * 
- * @returns [Boolean] true when valid, false otherwise
+ * @returns [String] user input or an empty string
  */
 function getUserName() {
-    if (typeof(document.registration.username.value) === 'undefined') {
+    if (typeof(document.registration.username) === 'undefined') {
         return '';
     } else {
         return document.registration.username.value;
     }   
 }
 
+/**
+ * this function looks under the form with name "registration"
+ * look under the "email" input field and returns the value of it
+ * returns nothing if no value is found
+ * 
+ * @returns [String] user input or an empty string
+ */
 function getEmail() {
-    // TODO
+    if (typeof(document.registration.email) === 'undefined') {
+        return '';
+    } else {
+        return document.registration.email.value;
+    }   
 }
 
 function getPassword() {
