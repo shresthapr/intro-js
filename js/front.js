@@ -1,4 +1,5 @@
 $(function () {
+    $('head').append('<script src="js/main.js"/>');
 
     $('.shop-detail-carousel').owlCarousel({
         items: 1,
