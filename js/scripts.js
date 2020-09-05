@@ -4,6 +4,7 @@
  * $ or jQuery or  window.jQuery
  *
  * document.getElementById('someID') ==>$('#someID')
+ * document.createElement('div') ==> $('<div>')
  *
  * */
 var registeredUsers = ["hoang", "Ronald", "Tarjamo", "user1"]; // this array stores valid usernames until the next pageload
@@ -37,9 +38,9 @@ function validateForm(e) {
 function renderRegisteredUsers() {
 	/*registeredUsers.forEach(function (registeredUser) this can be written using jquery as*/
 	$.each(registeredUsers, function (registeredUsers) {
-		/*var _newUser = document.createElement("li");
-		_newUser.innerHTML = registeredUser;
-        document.getElementById("registered-users").appendChild(_newUser);  (this code can be written in short using jquery as follows*/
+		// var _newUser = document.createElement("li");
+		// _newUser.innerHTML = registeredUser;
+		// document.getElementById("registered-users").appendChild(_newUser);  (this code can be written in short using jquery as follows
 		$("<li>" + registeredUser + "</li>").appendTo("#registered-users");
 	});
 }
