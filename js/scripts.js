@@ -127,7 +127,7 @@ function getUserName() {
 		return document.registration.username.value;
 	}
 } /*the above line of code can be written as follows using jquery*/
-return $('[name="username"]').val();
+// return $('[name="username"]').val();
 /**
  * this function looks under the form with name "registration"
  * look under the "email" input field and returns the value of it
@@ -142,7 +142,7 @@ function getEmail() {
 		return document.registration.email.value;
 	}
 } /*the above line of code can be written as follows using jquery*/
-return $('[name="email"]').val();
+// return $('[name="email"]').val();
 /**
  * this function looks under the form with name "registration"
  * look under the "password" input field and returns the value of it
@@ -158,7 +158,7 @@ function getPassword() {
 	}
 }
 /*the above line of code can be written as follows using jquery*/
-return $('[name="password"]').val();
+// return $('[name="password"]').val();
 /**
  * this function looks under the form with name "registration"
  * look under the "password_confirm" input field and returns the value of it
@@ -174,4 +174,4 @@ function getConfirmPassword() {
 	}
 }
 /*the above line of code can be written as follows using jquery*/
-return $('[name="password_confirm"]').val();
+// return $('[name="password_confirm"]').val();
