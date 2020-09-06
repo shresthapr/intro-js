@@ -8,18 +8,41 @@ function validateForm(e){
     console.log('email: ' + validateEmail());
     console.log('password: ' + validatePassword());
 
-    if (validateUsername() && validateEmail() && validatePassword()) {
-        var _newUser = getUserName();   
+    if (validateUsername() 
+    && validateEmail() 
+    && validatePhoneNumber()
+    && validatePassword()
+    && validateFirstName()
+    && validateLastName()
+    ) {
+        var _newUser = getUserDataObj();   
         // add code to update registeredUsers array with new user and call render function
         // TODO
+        registeredUsers.push(_newUser);
+        renderRegisteredUsers();
         document.registration.reset(); // reset form input fields
     }
 }
 
+
+function getUserDataObj() {
+    return {
+        userName: getUserName(),
+        firstName: getFirstName(),
+        lastName: getLastName(),
+        email: getEmail(),
+        phoneNumber: getPhoneNumber(),
+        password: getPassword(),
+        confirmPassword: getConfirmPassword(),
+    };
+}
+
+
 function renderRegisteredUsers() {
+    document.getElementById('registered-users').innerHTML = '';
     registeredUsers.forEach(function(registeredUser){
         var _newUser = document.createElement('li'); 
-        _newUser.innerHTML = registeredUser;
+        _newUser.innerHTML = JSON.stringify(registeredUser);
         document.getElementById('registered-users').appendChild(_newUser);
     });
 }
@@ -34,6 +57,29 @@ function validateUsername(){
     return !checkSpace(_userName);
 }
 
+/**
+ * this function supposely validates submitted username
+ * @returns [Boolean] true when valid, false otherwise
+ */
+
+ function validateFirstName(){
+     var_firstName = getFirstName();
+     return (var_firstName !== '');
+ }
+
+ function validateLastName() {
+     var_lastName = getLastName();
+     return (var_lastName !=='');
+
+ }
+/**
+ * this function supposely validates submitted phonenumber
+ * @returns [Boolean] true when valid, false otherwise
+ */
+ function validatePhoneNumber() {
+     var_phoneNeumber= getPhoneNumber();
+     return (!isNaN(_phoneNumber));
+ }
 /**
  * this function supposely validates submitted email
  * @returns [Boolean] true when valid, false otherwise
@@ -78,6 +124,9 @@ function validatePassword() {
     if (_password !== _confirmPassword) {
         return false;
     }
+    if(_password.length < 8) {
+        return false;
+    }
 
     return true;
 }
@@ -97,24 +146,62 @@ function checkSpace(sample) {
  * look under the "username" input field and returns the value of it
  * returns nothing if no value is found
  * 
- * @returns [Boolean] true when valid, false otherwise
+ * @returns [String] user input or an empty string
  */
 function getUserName() {
-    if (typeof(document.registration.username.value) === 'undefined') {
+    if (typeof(document.registration.username) === 'undefined') {
         return '';
     } else {
         return document.registration.username.value;
     }   
 }
 
+function getFirstName(){
+    if(typeof(document.registration.firstname.value) === 'undefined')
+    {return '';
+}else {
+    return document.registration.firstname.value;
+}
+}
+
+function getLastName(){
+    if(typeof(document.registration.lastname.value) === 'undefined')
+    {return '';
+}else {
+    return document.registration.lastname.value;
+}
+}
+
+function getPhoneNumber(){
+    if(typeof(document.registration.phonenumber.value) === 'undefined')
+    {return '';
+}else {
+    return document.registration.phonenumber.value;
+}
+}
+
 function getEmail() {
+    if(typeof(document.registration.email) === 'undefined') {
+        return '';
+    }
+    else {
+        return document.registration.email.value;
+    }
+    }
+    // TODO
+
+
+function getPassword() { if (typeof(document.username.password.value) === 'undefined') {
+return ''; 
+}
+else {
+    return document.registration.password.value;
     // TODO
 }
 
-function getPassword() {
-    // TODO
+function getConfirmPassword() { if (typeof(document.registration.password_confirm.value) === 'undefined' )
+{ return '';
 }
-
-function getConfirmPassword() {
-    // TODO
+else {
+    return document.registration.password_confirm.value;   
 }
