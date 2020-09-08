@@ -10,12 +10,14 @@
 		<script>
 			$(document).ready(function () {
 				$("#show").click(function () {
-					$("#theDiv").show();
+					document.getElementById("theDiv").style.visibility = "visible";
+					// $("#theDiv").show()
 					// TODO: show theDiv element
 				});
 
 				$("#hide").click(function () {
 					$("#theDiv").hide();
+					document.getElementById("theDiv").style.display = "none";
 					// TODO: hide theDiv element
 				});
 
@@ -23,6 +25,14 @@
 					// TODO: toggle hide/show theDiv Element
 					$("#theDiv").toggle();
 				});
+				function showHide() {
+					var x = document.getElementById("the Div");
+					if (x.style.visibility === "hidden") {
+						x.style.visibility = "visible";
+					} else {
+						x.style.visibility = "hidden";
+					}
+				}
 
 				$("#fadein").click(function () {
 					$("#theDiv").fadeIn(2000, oncomplete); // 10 seconds in miliseconds
@@ -69,7 +79,18 @@
 					Notification("!!!complete!!!");
 				}
 				$("#all").click(function () {
-					// TODO: animate element to the right, and increase font size to 200
+					$("#all").animate(
+						{
+							marginRight: "0",
+						},
+						3000,
+			         "linear" )
+			            if { function (animate) === complete)
+
+
+
+			         }
+					); // TODO: animate element to the right, and increase font size to 200
 					// call oncomplete function when animation is completed
 					$("#all").animate((marginRight: "0px"), fontSize200, [oncomplete]);
 				});
